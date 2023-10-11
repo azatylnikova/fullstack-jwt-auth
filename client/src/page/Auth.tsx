@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from "../hooks/redux";
 import { userSlice } from "../store/reducers/UserSlice";
 import { useDispatch } from "react-redux";
 import { fetchUsers } from "../store/reducers/ActionCreator";
+import NavBar from "../components/NavBar";
 const Auth = () => {
   const { users } = useAppSelector(state => state.userReducer);
   const { increment } = userSlice.actions;
@@ -17,11 +18,9 @@ const Auth = () => {
     dispatch(fetchUsers());
   }, []);
   return (
-    <div
-      className="d-flex justify-content-center align-items-center"
-      style={{ height: window.innerHeight - 54 }}
-    >
-      <div style={{ width: 600 }} className="p-5">
+    <div>
+      <NavBar />
+      <div className="p-5" style={{ minHeight: "80vh" }}>
         <h2 className="m-auto">{isLogin ? "Авторизация" : "Регистрация"}</h2>
         <form className="d-flex flex-column">
           <input
